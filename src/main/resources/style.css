@@ -1,0 +1,23 @@
+.tool-bar-panel{
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1 0 0;
+}
+
+.tool-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.tool-button:hover {
+    -fx-opacity: 0.8;
+}
+
+.btn-black { -fx-background-color: #000000; -fx-text-fill: white; }
+.btn-red   { -fx-background-color: #FF0000; -fx-text-fill: white; }
+.btn-blue  { -fx-background-color: #0000FF; -fx-text-fill: white; }
+.btn-green { -fx-background-color: #008000; -fx-text-fill: white; }
+
