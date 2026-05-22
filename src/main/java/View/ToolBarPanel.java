@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AppController;
+import Utils.FileIOManager;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -66,5 +67,14 @@ public class ToolBarPanel extends VBox{
         CheckBox verticalSymmetryCheckBox = new CheckBox("Vertical");
         verticalSymmetryCheckBox.setOnAction(v -> controller.setVerticalSymmetry(verticalSymmetryCheckBox.isSelected()));
         getChildren().add(verticalSymmetryCheckBox);
+
+        Button exportButton = new Button("Export as PNG");
+        exportButton.setMaxWidth(Double.MAX_VALUE);
+        exportButton.getStyleClass().add("tool-button");
+        exportButton.setOnAction(e -> {
+            FileIOManager.saveCanvasToPng(canvas, canvas.getScene().getWindow());
+        });
+        getChildren().add(exportButton);
+
     }
 }
