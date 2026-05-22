@@ -12,8 +12,8 @@ public class EmbroideryGrid implements GridModel{
     private final int rows;
     private final int cols;
 
-    public EmbroideryGrid(String[][] grid, int rows, int cols) {
-        this.grid = grid;
+    public EmbroideryGrid(int rows, int cols) {
+        this.grid = new String[rows][cols];
         this.rows = rows;
         this.cols = cols;
     }
