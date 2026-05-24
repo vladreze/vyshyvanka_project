@@ -1,17 +1,15 @@
 package View;
 
-import AdditionalInformation.AboutProject;
+import AdditionalInformation.AdditionalButtons;
 import Controller.AppController;
 import Utils.FileIOManager;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class ToolBarPanel extends VBox{
     private final EmbroideryCanvas canvas;
@@ -93,7 +91,7 @@ public class ToolBarPanel extends VBox{
         aboutButton.setMaxWidth(Double.MAX_VALUE);
         aboutButton.getStyleClass().add("tool-button");
         aboutButton.setOnAction(e -> {
-            AboutProject.displayInfo();
+            AdditionalButtons.displayAbout();
         });
         getChildren().add(aboutButton);
 
