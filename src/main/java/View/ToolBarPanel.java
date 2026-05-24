@@ -82,9 +82,7 @@ public class ToolBarPanel extends VBox{
         });
         getChildren().add(exportButton);
 
-        Label space = new Label("");
-        space.setMinHeight(200);
-        getChildren().add(space);
+        space(200);
 
         // About Button
         Button aboutButton = new Button("About");
@@ -95,7 +93,24 @@ public class ToolBarPanel extends VBox{
         });
         getChildren().add(aboutButton);
 
+        Button helpButton = new Button();
+        helpButton.setMaxWidth(Double.MAX_VALUE);
+        helpButton.getStyleClass().add("tool-button");
+        helpButton.setOnAction(h -> {
+            AdditionalButtons.displayHelp();
+        });
+        getChildren().add(helpButton);
+
+
+
 
 
     }
+
+    private void space(int spaceNum){
+        Label space = new Label("");
+        space.setMinHeight(spaceNum);
+        getChildren().add(space);
+    }
+
 }
