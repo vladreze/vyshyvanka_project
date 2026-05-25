@@ -82,7 +82,7 @@ public class ToolBarPanel extends VBox{
         });
         getChildren().add(exportButton);
 
-        space(200);
+        space(400);
 
         // About Button
         Button aboutButton = new Button("About");
