@@ -20,7 +20,7 @@ public class EmbroideryApp extends Application {
         BorderPane root = new BorderPane();
         root.setLeft(toolBarPanel);
         root.setCenter(view);
-        Scene scene = new Scene(root, 1050, 780);
+        Scene scene = new Scene(root, 1050, model.getRows() * view.getCellSize());
 
 
         stage.setTitle(" Vyshyvka App. made by Vladyslav Rezanov");
