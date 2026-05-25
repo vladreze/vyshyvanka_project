@@ -6,7 +6,9 @@ package Model;
  * as well as clearing the grid.
  */
 
-public class EmbroideryGrid implements GridModel{
+import java.io.Serializable;
+
+public class EmbroideryGrid implements GridModel, Serializable {
 
     private final String[][] grid;
     private final int rows;

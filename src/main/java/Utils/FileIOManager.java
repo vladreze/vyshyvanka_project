@@ -1,12 +1,14 @@
 package Utils;
 
+import Model.EmbroideryGrid;
+import View.EmbroideryCanvas;
 import com.sun.javafx.embed.swing.SwingFXUtilsImpl;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 
 import java.awt.*;
-import java.io.File;
+import java.io.*;
 
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Window;
@@ -35,6 +37,23 @@ public class FileIOManager {
             } catch (Exception e) {
                 System.out.println("Error saving canvas: " + e.getMessage());
             }
+        }
+    }
+
+    public static void exportCanvas(EmbroideryGrid embroideryGrid, File file){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(embroideryGrid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static EmbroideryGrid importCanvas(File file){
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            return (EmbroideryGrid) ois.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
