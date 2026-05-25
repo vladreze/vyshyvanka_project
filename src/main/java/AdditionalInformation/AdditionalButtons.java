@@ -17,34 +17,57 @@ import javafx.stage.Stage;
 
 public class AdditionalButtons {
 
-    public static void displayAbout(){
+    public static void displayAbout() {
         Stage popUpStage = new Stage();
+        popUpStage.setTitle("About Project");
+
         VBox popUpLayout = new VBox();
         popUpLayout.setPadding(new Insets(15));
-        popUpLayout.setAlignment(Pos.CENTER);
-        popUpLayout.getChildren().add(new Label("Project: Embroidery Design App"));
-        popUpLayout.getChildren().add(new Label("Author: Vladyslav Rezanov"));
-        popUpLayout.getChildren().add(new Label("Description: A JavaFX application for creating pixel art embroidery designs."));
-        Scene popUpScene = new Scene(popUpLayout, 750, 350);
-        popUpStage.setScene(popUpScene);
-        popUpStage.show();
+
+        Label titleLabel = new Label("Project: Pixel Embroidery Editor");
+        titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+
+        Label authorLabel = new Label("Developer: Vladyslav Rezanov");
+        Label institutionLabel = new Label("National University of Kyiv-Mohyla Academy");
+        Label versionLabel = new Label("Version: 1.0 (2026)");
+
+        Label descLabel = new Label("Description: A specialized JavaFX application designed for creating, editing, " +
+                "and exporting traditional pixel art embroidery designs. Features include dynamic grid rendering, " +
+                "multi-axis symmetry tools, color palettes, and PNG export capabilities.");
+        descLabel.setWrapText(true); // Дозволяє тексту переноситися, щоб не вилізти за межі вікна
+        descLabel.setMaxWidth(600);
+
+        popUpLayout.getChildren().addAll(
+                titleLabel,
+                authorLabel,
+                institutionLabel,
+                versionLabel,
+                new Label(""),
+                descLabel,
+                new Label("")
+        );
 
 
-        popUpLayout.getChildren().add(new Label(""));
-        popUpLayout.setMinHeight(200);
-        Button closeButton = new Button("Understood");
-        closeButton.setMaxWidth(100);
+
+
+        Button closeButton = new Button("Close");
+        closeButton.setMaxWidth(150);
         closeButton.setOnAction(e -> popUpStage.close());
         closeButton.getStyleClass().add("tool-button");
         popUpLayout.getChildren().add(closeButton);
 
+        Scene popUpScene = new Scene(popUpLayout, 650, 250);
+
+        popUpStage.setScene(popUpScene);
+        popUpStage.showAndWait();
 
         try {
             String css = AdditionalButtons.class.getResource("/styles.css").toExternalForm();
             popUpScene.getStylesheets().add(css);
         } catch (Exception e) {
-            System.out.println("Error loading CSS" + e.getMessage());
+            System.out.println("Error loading CSS: " + e.getMessage());
         }
+
     }
 
     public static void displayHelp(){
@@ -77,6 +100,7 @@ public class AdditionalButtons {
 
 
     }
+
 
 
 }
