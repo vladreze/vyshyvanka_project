@@ -13,19 +13,25 @@ public class EmbroideryApp extends Application {
     @Override
     public void start(Stage stage) {
 
-        EmbroideryGrid model = new EmbroideryGrid(30,40);
+        EmbroideryGrid model = new EmbroideryGrid(39,39);
         AppController controller = new AppController(model);
         EmbroideryCanvas view = new EmbroideryCanvas(model,controller, 20);
         ToolBarPanel toolBarPanel = new ToolBarPanel(view, controller);
         BorderPane root = new BorderPane();
         root.setLeft(toolBarPanel);
         root.setCenter(view);
-        Scene scene = new Scene(root, 1000, 650);
+        Scene scene = new Scene(root, 1050, 780);
 
-        stage.setTitle(" APP ");
+
+        stage.setTitle(" Vyshyvka App. made by Vladyslav Rezanov");
         stage.setScene(scene);
         stage.setResizable(false);
+
+        controller.generateStartupPattern();
+        view.redraw();
         stage.show();
+
+
 
     }
 
