@@ -13,7 +13,7 @@ public class AppController {
 
     private final GridModel gridModel;
 
-    private String currentColor = "000000"; // Default color (black)
+    private String currentColor = "000000";
     private boolean horizontalSymmetry = false;
     private boolean verticalSymmetry = false;
 
@@ -63,4 +63,20 @@ public class AppController {
             gridModel.setPixelColor(maxRow - row, maxCol - col, currentColor);
         }
     }
+
+//    public void generateStartupPattern(){
+//        setVerticalSymmetry(true);
+//        setVerticalSymmetry(true);
+//        setCurrentColor("#FFFFFF");
+//
+//        int centerX = gridModel.getCols() / 2;
+//        int centerY = gridModel.getRows() / 2;
+//
+//        handleClick(centerX, centerY);
+//
+//        setCurrentColor("#FF0000");
+//        for(int i=0; i<5;i++){
+//            handleClick(centerX, centerY - i);
+//        }
+//    }
 }

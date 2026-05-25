@@ -93,7 +93,7 @@ public class ToolBarPanel extends VBox{
         });
         getChildren().add(aboutButton);
 
-        Button helpButton = new Button();
+        Button helpButton = new Button("Help");
         helpButton.setMaxWidth(Double.MAX_VALUE);
         helpButton.getStyleClass().add("tool-button");
         helpButton.setOnAction(h -> {
