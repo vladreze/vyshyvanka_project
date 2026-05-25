@@ -59,4 +59,7 @@ public class EmbroideryCanvas extends Canvas {
 
     }
 
+    public int getCellSize() {
+        return cellSize;
+    }
 }
