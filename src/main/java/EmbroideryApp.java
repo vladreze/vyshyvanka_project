@@ -27,7 +27,6 @@ public class EmbroideryApp extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
 
-        controller.generateStartupPattern();
         view.redraw();
         stage.show();
 

@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class EmbroideryCanvas extends Canvas {
 
-    private final GridModel model;
+    private GridModel model;
     private final AppController controller;
     private final int cellSize; // Розмір однієї клітинки на екрані (в пікселях)
 
@@ -61,5 +61,9 @@ public class EmbroideryCanvas extends Canvas {
 
     public int getCellSize() {
         return cellSize;
+    }
+
+    public void setGridModel(GridModel model) {
+        this.model = model;
     }
 }

@@ -1,6 +1,7 @@
 package Utils;
 
 import Model.EmbroideryGrid;
+import Model.GridModel;
 import View.EmbroideryCanvas;
 import com.sun.javafx.embed.swing.SwingFXUtilsImpl;
 import javafx.embed.swing.SwingFXUtils;
@@ -40,17 +41,17 @@ public class FileIOManager {
         }
     }
 
-    public static void exportCanvas(EmbroideryGrid embroideryGrid, File file){
+    public static void exportCanvas(GridModel gridModel, File file){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(embroideryGrid);
+            oos.writeObject(gridModel);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static EmbroideryGrid importCanvas(File file){
+    public static GridModel importCanvas(File file){
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            return (EmbroideryGrid) ois.readObject();
+            return (GridModel) ois.readObject();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

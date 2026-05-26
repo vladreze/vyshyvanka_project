@@ -2,6 +2,7 @@ package View;
 
 import AdditionalInformation.AdditionalButtons;
 import Controller.AppController;
+import Model.GridModel;
 import Utils.FileIOManager;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -74,13 +75,57 @@ public class ToolBarPanel extends VBox{
         getChildren().add(verticalSymmetryCheckBox);
 
         // Export Button
-        Button exportButton = new Button("Export as PNG");
+        Button exportAsPng = new Button("Export as PNG");
+        exportAsPng.setMaxWidth(Double.MAX_VALUE);
+        exportAsPng.getStyleClass().add("tool-button");
+        exportAsPng.setOnAction(e -> {
+            FileIOManager.saveCanvasToPng(canvas, canvas.getScene().getWindow());
+        });
+        getChildren().add(exportAsPng);
+
+        Button exportButton = new Button("Export Project");
         exportButton.setMaxWidth(Double.MAX_VALUE);
         exportButton.getStyleClass().add("tool-button");
         exportButton.setOnAction(e -> {
-            FileIOManager.saveCanvasToPng(canvas, canvas.getScene().getWindow());
+            javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+            fileChooser.setTitle("Save Project Data");
+            fileChooser.getExtensionFilters().add(
+                    new javafx.stage.FileChooser.ExtensionFilter("Vyshyvka Data (*.dat)", "*.dat")
+            );
+            javafx.stage.Window window = exportButton.getScene().getWindow();
+            java.io.File file = fileChooser.showSaveDialog(window);
+            if(file != null){
+                Utils.FileIOManager.exportCanvas(controller.getGridModel(), file);
+            }
         });
         getChildren().add(exportButton);
+
+
+
+        // Import Button
+        Button importButton = new Button("Import Image");
+        importButton.setMaxWidth(Double.MAX_VALUE);
+        importButton.getStyleClass().add("tool-button");
+        importButton.setOnAction(e -> {
+            javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+            fileChooser.setTitle("Open Project");
+            fileChooser.getExtensionFilters().add(
+                    new javafx.stage.FileChooser.ExtensionFilter("Vyshyvka Data (*.dat)", "*.dat")
+            );
+
+            javafx.stage.Window window = importButton.getScene().getWindow();
+            java.io.File file = fileChooser.showOpenDialog(window);
+
+            if (file != null) {
+                GridModel loadedGrid = FileIOManager.importCanvas(file);
+                if (loadedGrid != null) {
+                    controller.setGridModel(loadedGrid);
+                    canvas.setGridModel(loadedGrid);
+                    canvas.redraw();
+                }
+            }
+        });
+        getChildren().add(importButton);
 
         space(400);
 
@@ -101,6 +146,7 @@ public class ToolBarPanel extends VBox{
             AdditionalButtons.displayHelp();
         });
         getChildren().add(helpButton);
+
 
 
 

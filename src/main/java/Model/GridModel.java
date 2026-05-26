@@ -5,7 +5,9 @@ package Model;
  * It defines methods for managing the grid's dimensions and pixel colors.
  */
 
-public interface GridModel {
+import java.io.Serializable;
+
+public interface GridModel extends Serializable {
 
     int getRows();
     int getCols();
