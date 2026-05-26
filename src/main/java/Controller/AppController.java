@@ -64,62 +64,44 @@ public class AppController {
         }
     }
 
-//    public void generateStartupPattern(){
-//        boolean prevHor = this.horizontalSymmetry;
-//        boolean prevVer = this.verticalSymmetry;
-//        String prevColor = this.currentColor;
-//
-//        // 2. Вмикаємо повну симетрію
-//        setVerticalSymmetry(true);
-//        setHorizontalSymmetry(true);
-//
-//        // 3. Знаходимо центр
-//        int centerX = gridModel.getCols() / 2;
-//        int centerY = gridModel.getRows() / 2;
-//
-//        // ==========================================
-//        // 4. МАЛЮЄМО ЧЕРВОНУ ЧАСТИНУ (Внутрішній візерунок)
-//        // ==========================================
-//        setCurrentColor("#FF0000"); // Червоний
-//
-//        // Малюємо діагональний промінь від центру
-//        for (int i = 1; i <= 8; i++) {
-//            handleClick(centerY - i, centerX - i);
-//        }
-//
-//        // Малюємо "ромбик" між променями
-//        for (int i = 2; i <= 6; i++) {
-//            handleClick(centerY - i, centerX - (8 - i));
-//        }
-//
-//        // ==========================================
-//        // 5. МАЛЮЄМО ЧОРНУ ЧАСТИНУ (Зовнішні контури та деталі)
-//        // ==========================================
-//        setCurrentColor("#000000"); // Чорний
-//
-//        // Малюємо прямі лінії (хрест) по осях
-//        for (int i = 2; i <= 10; i++) {
-//            handleClick(centerY, centerX - i); // Горизонтальна вісь
-//            handleClick(centerY - i, centerX); // Вертикальна вісь
-//        }
-//
-//        // Додаємо традиційні "зарубки" (хрестики) на кінцях осей
-//        handleClick(centerY - 10, centerX - 1);
-//        handleClick(centerY - 10, centerX - 2);
-//        handleClick(centerY - 1, centerX - 10);
-//        handleClick(centerY - 2, centerX - 10);
-//
-//        // Додаємо чорний контур навколо червоних діагоналей
-//        for (int i = 4; i <= 9; i++) {
-//            handleClick(centerY - i, centerX - i + 2);
-//            handleClick(centerY - i + 2, centerX - i);
-//        }
-//
-//        // 6. Повертаємо інструменти в початковий стан
-//        setHorizontalSymmetry(prevHor);
-//        setVerticalSymmetry(prevVer);
-//        setCurrentColor(prevColor);
-//    }
+    public void generateStartupPattern(){
+        boolean prevHor = this.horizontalSymmetry;
+        boolean prevVer = this.verticalSymmetry;
+        String prevColor = this.currentColor;
+
+        setVerticalSymmetry(true);
+        setHorizontalSymmetry(true);
+        int centerX = gridModel.getCols() / 2;
+        int centerY = gridModel.getRows() / 2;
+        setCurrentColor("#FF0000");
+
+        for (int i = 1; i <= 8; i++) {
+            handleClick(centerY - i, centerX - i);
+        }
+
+        for (int i = 2; i <= 6; i++) {
+            handleClick(centerY - i, centerX - (8 - i));
+        }
+        setCurrentColor("#000000");
+        for (int i = 2; i <= 10; i++) {
+            handleClick(centerY, centerX - i);
+            handleClick(centerY - i, centerX);
+        }
+
+        handleClick(centerY - 10, centerX - 1);
+        handleClick(centerY - 10, centerX - 2);
+        handleClick(centerY - 1, centerX - 10);
+        handleClick(centerY - 2, centerX - 10);
+
+        for (int i = 4; i <= 9; i++) {
+            handleClick(centerY - i, centerX - i + 2);
+            handleClick(centerY - i + 2, centerX - i);
+        }
+
+        setHorizontalSymmetry(prevHor);
+        setVerticalSymmetry(prevVer);
+        setCurrentColor(prevColor);
+    }
 
 
     public GridModel getGridModel() {
