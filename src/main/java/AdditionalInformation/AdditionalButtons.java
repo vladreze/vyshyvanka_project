@@ -63,15 +63,15 @@ public class AdditionalButtons {
 
         Scene popUpScene = new Scene(popUpLayout, 650, 250);
 
-        popUpStage.setScene(popUpScene);
-        popUpStage.showAndWait();
-
         try {
             String css = AdditionalButtons.class.getResource("/styles.css").toExternalForm();
             popUpScene.getStylesheets().add(css);
         } catch (Exception e) {
             System.out.println("Error loading CSS: " + e.getMessage());
         }
+
+        popUpStage.setScene(popUpScene);
+        popUpStage.showAndWait();
 
     }
 
@@ -84,39 +84,62 @@ public class AdditionalButtons {
         contentLayout.setAlignment(Pos.TOP_CENTER);
 
         Label titleLabel = new Label("Embroidery Editor: User Guide");
-        titleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        titleLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         contentLayout.getChildren().add(titleLabel);
 
         Label section1Title = new Label("1. Basic Drawing");
-        section1Title.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        section1Title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
 
         Label section1Text = new Label("To start drawing, simply click on any cell in the grid. " +
                 "You can select your preferred thread color from the Color Picker located on the left toolbar. " +
-                "To fix a mistake, select the 'Eraser' tool and click on the colored cell to clear it.");
+                "To fix a mistake, select the 'Eraser' tool and click on the colored cell to clear it." +
+                "To clear all canvas, click on 'Clear All' button");
+
         section1Text.setWrapText(true);
+        section1Text.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
         contentLayout.getChildren().addAll(section1Title, section1Text);
 
-        Label section2Title = new Label("2. Magic Symmetry");
-        section2Title.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        addImageToLayout(contentLayout, "/images/gifPartOne.gif", 600);
+
+        Label section2Title = new Label("2. Symmetry");
+        section2Title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
 
         Label section2Text = new Label("Our unique feature is real-time symmetry. " +
                 "Check 'Horizontal' to mirror your stitches left-to-right. " +
                 "Check 'Vertical' to mirror top-to-bottom. " +
                 "Enable both for full 4-way radial symmetry, perfect for creating traditional stars and mandalas.");
         section2Text.setWrapText(true);
+        section2Text.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
         contentLayout.getChildren().addAll(section2Title, section2Text);
 
-        Label section3Title = new Label("3. Exporting Your Work");
-        section3Title.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        addImageToLayout(contentLayout, "/images/gifPartTwo.gif", 600);
 
-        Label section3Text = new Label("Once your masterpiece is complete, click the 'Save (PNG)' button. " +
+        Label section3Title = new Label("3. Exporting Your Work");
+        section3Title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+
+        Label section3Text = new Label("Once your masterpiece is complete, click the 'Export as PNG' button. " +
                 "This will generate a high-quality image of your pattern without the grid lines, " +
                 "ready to be printed or shared.");
         section3Text.setWrapText(true);
+        section3Text.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
-        contentLayout.getChildren().addAll(section3Title, section3Text, new Label(""));
+        contentLayout.getChildren().addAll(section3Title, section3Text);
+
+        addImageToLayout(contentLayout, "/images/gifPartThree.gif", 600);
+
+
+        Label section4Text = new Label("Use 'Export Project' to save your current progress. Whenever you want to continue working, simply click 'Import Project' to load your previously saved file back onto the canvas.");
+        section4Text.setWrapText(true);
+        section4Text.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+        contentLayout.getChildren().add(section4Text);
+
+        addImageToLayout(contentLayout, "/images/gifPartFour.gif", 600);
+
+        contentLayout.getChildren().add(new Label(" "));
+
 
         Button closeButton = new Button("Got it!");
         closeButton.setMaxWidth(150);
@@ -129,7 +152,7 @@ public class AdditionalButtons {
         scrollPane.setFitToWidth(true);
         scrollPane.setStyle("-fx-background-color: transparent;");
 
-        Scene scene = new Scene(scrollPane, 600, 500);
+        Scene scene = new Scene(scrollPane, 700, 500);
 
         try {
             String css = AdditionalButtons.class.getResource("/styles.css").toExternalForm();
@@ -148,7 +171,7 @@ public class AdditionalButtons {
 
     private static void addImageToLayout(VBox layout, String imagePath, double width) {
         try {
-            Image img = new Image(Objects.requireNonNull(AdditionalButtons.class.getResourceAsStream(imagePath)));
+            Image img = new Image(Objects.requireNonNull(AdditionalButtons.class.getResource(imagePath)).toExternalForm());
             ImageView imgView = new ImageView(img);
             imgView.setFitWidth(width);
             imgView.setPreserveRatio(true);
