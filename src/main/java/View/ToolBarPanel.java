@@ -103,7 +103,7 @@ public class ToolBarPanel extends VBox{
 
 
         // Import Button
-        Button importButton = new Button("Import Image");
+        Button importButton = new Button("Import Project");
         importButton.setMaxWidth(Double.MAX_VALUE);
         importButton.getStyleClass().add("tool-button");
         importButton.setOnAction(e -> {
@@ -127,7 +127,7 @@ public class ToolBarPanel extends VBox{
         });
         getChildren().add(importButton);
 
-        space(400);
+        space(300);
 
         // About Button
         Button aboutButton = new Button("About");
@@ -146,11 +146,6 @@ public class ToolBarPanel extends VBox{
             AdditionalButtons.displayHelp();
         });
         getChildren().add(helpButton);
-
-
-
-
-
 
     }
 

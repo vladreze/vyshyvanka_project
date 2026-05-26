@@ -29,8 +29,8 @@ public class EmbroideryApp extends Application {
 
         view.redraw();
         stage.show();
-
-
+        controller.generateStartupPattern();
+        view.redraw();
 
     }
 
